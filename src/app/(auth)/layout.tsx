@@ -1,4 +1,4 @@
-import { Icons } from "@/components/icons";
+import { Logo } from "@/components/logo";
 import Link from "next/link";
 import React from "react";
 
@@ -13,7 +13,7 @@ export default function RootLayout({
         href="/"
         className="absolute lg:left-5 left-2 top-5 items-center space-x-2 flex"
       >
-        <Icons.logo className="size-6" aria-hidden="true" />
+        <Logo className="size-6" aria-hidden="true" />
         <span className="font-bold lg:inline-block">Vídeos</span>
         <span className="sr-only">Inicio</span>
       </Link>
