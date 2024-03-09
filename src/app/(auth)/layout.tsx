@@ -1,6 +1,5 @@
 import { Logo } from "@/components/logo";
 import Link from "next/link";
-import React from "react";
 
 export default function RootLayout({
   children,
