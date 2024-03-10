@@ -42,21 +42,51 @@ export async function getPopular({
   }
 }
 
-export async function getMoviesByGenre({
+export async function getByGenre({
+  type,
   genreId,
-  page,
+  page = 1,
 }: {
+  type: "movie" | "tv";
   genreId: number;
   page?: number;
 }) {
-  const apiUrl = `${process.env.TMDB_API_URL}/discover/movie?api_key=${apiKey}&language=es-US&page=${page}&with_genres=${genreId}`;
+  const apiUrl = `${process.env.TMDB_API_URL}/discover/${type}?api_key=${apiKey}&language=es-US&page=${page}&with_genres=${genreId}`;
 
   try {
     const response = await axios.get(apiUrl);
-    return response.data.results as Content[];
+    let results = response.data.results as any[];
+
+    if (type === "tv") {
+      results = results.map((item) => ({
+        ...item,
+        title: item.name,
+        release_date: item.first_air_date,
+      }));
+    }
+
+    return results as Content[];
   } catch (error) {
-    console.error("Failed to fetch movies by genre:", error);
+    console.error(`Failed to fetch ${type} by genre:`, error);
     return [];
+  }
+}
+
+export async function getDetails({
+  type,
+  id,
+}: {
+  type: "movie" | "tv";
+  id: number;
+}) {
+  const apiUrl = `${process.env.TMDB_API_URL}/${type}/${id}?api_key=${apiKey}&language=es-US`;
+
+  try {
+    const response = await axios.get(apiUrl);
+    return response.data;
+  } catch (error) {
+    console.error(`Failed to fetch ${type} details:`, error);
+    return null;
   }
 }
 
