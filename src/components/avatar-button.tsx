@@ -1,5 +1,7 @@
 "use client";
 
+import { useClerk } from "@clerk/clerk-react";
+import { useUser } from "@clerk/nextjs";
 import {
   Avatar,
   Dropdown,
@@ -8,8 +10,13 @@ import {
   DropdownSection,
   DropdownTrigger,
 } from "@nextui-org/react";
+import { useRouter } from "next/navigation";
 
 export function AvatarButton() {
+  const { signOut } = useClerk();
+  const router = useRouter();
+  const { user } = useUser();
+
   return (
     <Dropdown placement="bottom-end">
       <DropdownTrigger>
@@ -17,7 +24,7 @@ export function AvatarButton() {
           isBordered
           as="button"
           className="shrink-0 transition-transform"
-          src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+          src={user?.imageUrl || ""}
         />
       </DropdownTrigger>
       <DropdownMenu aria-label="Logout" variant="flat">
@@ -32,13 +39,17 @@ export function AvatarButton() {
             <div className="inline-flex flex-col items-start">
               <span className="text-small text-default-600">Usuario</span>
               <span className="text-tiny text-default-500">
-                zoey@example.com
+                {user?.emailAddresses[0].emailAddress}
               </span>
             </div>
           </DropdownItem>
         </DropdownSection>
         <DropdownSection aria-label="Logout">
-          <DropdownItem key="logout" color="danger">
+          <DropdownItem
+            key="logout"
+            color="danger"
+            onClick={() => signOut(() => router.push("/"))}
+          >
             Cerrar sesión
           </DropdownItem>
         </DropdownSection>

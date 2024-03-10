@@ -2,10 +2,10 @@
 
 import { AvatarButton } from "@/components/avatar-button";
 import { Logo } from "@/components/logo";
-import { Icon } from "@iconify/react";
+import { useUser } from "@clerk/nextjs";
 import {
+  Button,
   cn,
-  Input,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -16,6 +16,7 @@ import { usePathname } from "next/navigation";
 
 export function MainNav() {
   const pathname = usePathname();
+  const { isSignedIn } = useUser();
 
   return (
     <Navbar isBordered>
@@ -32,31 +33,40 @@ export function MainNav() {
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent className="hidden gap-3 sm:flex" justify="center">
-        <NavbarItem>
-          <Link
-            className={cn({
-              "text-primary": pathname.includes("/peliculas"),
-            })}
-            href="/peliculas"
-            aria-current={pathname === "/peliculas" ? "page" : "false"}
-          >
-            Películas
-          </Link>
-        </NavbarItem>
-        <NavbarItem isActive>
-          <Link
-            className={cn({ "text-primary": pathname.includes("/series") })}
-            href="/series"
-            aria-current={pathname === "/series" ? "page" : "false"}
-          >
-            Series
-          </Link>
-        </NavbarItem>
-      </NavbarContent>
+      {isSignedIn && (
+        <NavbarContent className="hidden gap-3 sm:flex" justify="center">
+          <NavbarItem>
+            <Link
+              className={cn({
+                "text-primary": pathname.includes("/peliculas"),
+              })}
+              href="/peliculas"
+              aria-current={pathname === "/peliculas" ? "page" : "false"}
+            >
+              Películas
+            </Link>
+          </NavbarItem>
+          <NavbarItem isActive>
+            <Link
+              className={cn({ "text-primary": pathname.includes("/series") })}
+              href="/series"
+              aria-current={pathname === "/series" ? "page" : "false"}
+            >
+              Series
+            </Link>
+          </NavbarItem>
+        </NavbarContent>
+      )}
 
       <NavbarContent as="div" className="items-center" justify="end">
-        <AvatarButton />
+        {!isSignedIn && (
+          <Link href="/inicio-sesion">
+            <Button color="primary" variant="flat" size="sm">
+              Iniciar sesión
+            </Button>
+          </Link>
+        )}
+        {isSignedIn && <AvatarButton />}
       </NavbarContent>
     </Navbar>
   );

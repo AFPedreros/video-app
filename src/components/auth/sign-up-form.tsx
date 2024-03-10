@@ -1,5 +1,6 @@
 "use client";
 
+import { VerificationForm } from "@/components/auth/verification-form";
 import { useSignUp } from "@clerk/nextjs";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Icon } from "@iconify/react";
@@ -10,8 +11,6 @@ import * as React from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import * as z from "zod";
-
-import { VerificationForm } from "./verification-form";
 
 const passwordRegex =
   /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
@@ -62,7 +61,6 @@ export function SignUpForm() {
   const { isLoaded, signUp, setActive } = useSignUp();
   const [isVisible, setIsVisible] = React.useState(false);
   const [verifying, setVerifying] = React.useState(false);
-  const [code, setCode] = React.useState("");
 
   const toggleVisibility = () => setIsVisible(!isVisible);
 
@@ -96,7 +94,7 @@ export function SignUpForm() {
 
       if (completeSignUp.status === "complete") {
         await setActive({ session: completeSignUp.createdSessionId });
-        router.push("/");
+        router.push("/peliculas");
         toast.success("Registro exitoso");
       } else {
         console.error("Verification failed:", completeSignUp);
