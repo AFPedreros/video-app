@@ -27,7 +27,7 @@ export function MainNav() {
             className="absolute left-2 top-5 flex items-center space-x-2 lg:left-5"
           >
             <Logo className="size-6" aria-hidden="true" />
-            <span className="font-bold lg:inline-block">Vídeos</span>
+            <span className="font-bold lg:inline-block">Cineverse</span>
             <span className="sr-only">Inicio</span>
           </Link>
         </NavbarBrand>
