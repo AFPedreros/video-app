@@ -27,7 +27,7 @@ const formSchema = z
       })
       .regex(passwordRegex, {
         message:
-          "La contraseña debe tener al menos una mayúscula, un número y un carácter especial",
+          "La contraseña debe contener una mayúscula, un número y un carácter especial (ej. #%!). Es necesario incluir al menos uno de estos símbolos",
       }),
     confirmPassword: z.string(),
     termsAccepted: z.boolean().refine((val) => val === true, {

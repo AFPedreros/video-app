@@ -1,6 +1,7 @@
 "use client";
 
 import { AvatarButton } from "@/components/avatar-button";
+import { MobileNavbar } from "@/components/layouts/mobile-navbar";
 import { Logo } from "@/components/logo";
 import { useUser } from "@clerk/nextjs";
 import {
@@ -10,6 +11,7 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
+  NavbarMenuToggle,
 } from "@nextui-org/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -68,6 +70,10 @@ export function MainNav() {
         )}
         {isSignedIn && <AvatarButton />}
       </NavbarContent>
+
+      <NavbarMenuToggle className="text-default-400 md:hidden" />
+
+      <MobileNavbar />
     </Navbar>
   );
 }
