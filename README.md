@@ -1,36 +1,24 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Cineverse
 
-## Getting Started
+Este proyecto ha sido desarrollado como parte de una prueba técnica para FrontEnd Developer, enfocado en emular la experiencia de visualizar contenido multimedia tipo videos. La aplicación permite a los usuarios registrarse, iniciar sesión y explorar una amplia variedad de películas y series, organizadas por popularidad y filtrables por 5 categorías diferentes, todo ello gracias a la integración con la API TMDB.
 
-First, run the development server:
+## Tecnologías Utilizadas
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Framework**: Next.js 14
+- **Estilos**: Tailwind CSS
+- **Framework de UI**: NextUI
+- **Animaciones**: Framer Motion
+- **Llamadas API**: Axios
+- **API de Contenidos**: TMDB (The Movie Database)
+- **Autenticación**: Clerk
+- **Gestión de Formularios**: React Hook Form con validación utilizando Zod
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Instalación y Ejecución Local
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Para comenzar a trabajar con este proyecto en tu entorno local, simplemente sigue estos pasos:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Clona el repositorio a tu equipo.
+2. Abre la terminal, navega hasta el directorio del proyecto e instala las dependencias con el comando `npm install`.
+3. Crear Cuentas en [Clerk](https://clerk.com/) y [TMDB](https://www.themoviedb.org/): Para que la autenticación y la obtención de contenido multimedia funcionen correctamente, necesitarás crear cuentas en Clerk y TMDB. Regístrate y obtén las claves de API necesarias para estos servicios.
+4. Crea un archivo `.env` siguiendo el formato del archivo `.env.example` para configurar las variables de entorno obtenidas de Clerk y TMDB.
+5. Ejecuta `npm run dev` para iniciar el servidor de desarrollo. Abre `http://localhost:3000` en tu navegador para ver la aplicación.
