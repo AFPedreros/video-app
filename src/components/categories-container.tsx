@@ -12,7 +12,7 @@ export function CategoriesContainer({
 }: CategoriesContainerProps) {
   const isMovie = type === "movie";
   return (
-    <div className="flex flex-col md:flex-row rounded-medium bg-default-50 px-4 pb-3 pt-2 md:pt-3 w-full md:items-center justify-between gap-2 ">
+    <div className="flex w-full flex-col justify-between gap-2 rounded-medium bg-default-50 px-4 pb-3 pt-2 md:flex-row md:items-center md:pt-3">
       <h2 className="text-large font-medium">Categorías</h2>
       <div className="-ml-2 flex w-full flex-wrap items-center justify-start gap-2 md:ml-0 md:justify-end">
         <CategoryCard

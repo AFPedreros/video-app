@@ -10,8 +10,8 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "Video App",
-  description: "Aplicación para ver videos",
+  title: "Cineverse",
+  description: "Busca las mejores series y películas por categorías",
   icons: [{ rel: "icon", url: "/favicon.svg" }],
 };
 

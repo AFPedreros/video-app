@@ -1,8 +1,7 @@
 "use client";
 
 import { Button } from "@nextui-org/react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 type CategoryCardProps = {
   slug: string;
@@ -10,17 +9,17 @@ type CategoryCardProps = {
 };
 
 export function CategoryCard({ slug, name }: CategoryCardProps) {
+  const router = useRouter();
   const pathname = usePathname();
 
   const isSelected = pathname === slug;
   return (
-    <Link href={slug}>
-      <Button
-        variant={isSelected ? "shadow" : "bordered"}
-        color={isSelected ? "primary" : "default"}
-      >
-        {name}
-      </Button>
-    </Link>
+    <Button
+      variant={isSelected ? "shadow" : "bordered"}
+      color={isSelected ? "primary" : "default"}
+      onClick={() => router.push(slug)}
+    >
+      {name}
+    </Button>
   );
 }
