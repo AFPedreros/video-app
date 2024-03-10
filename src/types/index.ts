@@ -8,3 +8,9 @@ export type Content = {
   backdrop_path: string;
   vote_average: number;
 };
+
+export type Category = {
+  genreId: number;
+  slug: string;
+  name: string;
+};

@@ -25,12 +25,23 @@ export async function getPopular({
 
   try {
     const response = await axios.get(apiUrl);
-    return response.data.results as Content[];
+    let results = response.data.results as any[];
+
+    if (type === "tv") {
+      results = results.map((item) => ({
+        ...item,
+        title: item.name,
+        release_date: item.first_air_date,
+      }));
+    }
+
+    return results as Content[];
   } catch (error) {
     console.error(`Failed to fetch popular ${type}:`, error);
     return [];
   }
 }
+
 export async function getMoviesByGenre({
   genreId,
   page,

@@ -1,13 +1,14 @@
 import { fetchPopular } from "@/actions";
 import { CategoriesContainer } from "@/components/categories-container";
 import { InfiniteScrollContent } from "@/components/infinite-scroll-content";
+import { movieCategories } from "@/lib/categories-data";
 
 export default async function MoviesPage() {
   const movies = await fetchPopular({ page: 1, type: "movie" });
 
   return (
     <div className="flex flex-col items-center justify-center gap-6 bg-background p-6 lg:p-8">
-      <CategoriesContainer />
+      <CategoriesContainer categories={movieCategories} type="movie" />
 
       <h1 className="w-full text-3xl font-extrabold tracking-tight">
         Películas Populares
