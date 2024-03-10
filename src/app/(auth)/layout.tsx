@@ -1,11 +1,16 @@
 import { Logo } from "@/components/logo";
+import { auth } from "@clerk/nextjs";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { userId } = auth();
+
+  if (userId) redirect("/peliculas");
   return (
     <main className="relative flex h-screen w-screen items-center justify-center bg-gradient-to-br from-primary-50 via-primary-300 to-primary-500 p-2 sm:p-4 lg:p-8">
       <Link

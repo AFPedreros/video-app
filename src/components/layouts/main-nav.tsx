@@ -61,7 +61,7 @@ export function MainNav() {
       <NavbarContent as="div" className="items-center" justify="end">
         {!isSignedIn && (
           <Link href="/inicio-sesion">
-            <Button color="primary" variant="flat" size="sm">
+            <Button color="primary" variant="shadow" size="sm">
               Iniciar sesión
             </Button>
           </Link>
