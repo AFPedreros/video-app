@@ -2,7 +2,7 @@
 
 import { Icon } from "@iconify/react";
 import { Button, Input } from "@nextui-org/react";
-import React from "react";
+import * as React from "react";
 
 export function LoginForm() {
   const [isVisible, setIsVisible] = React.useState(false);

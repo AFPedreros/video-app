@@ -3,7 +3,7 @@
 import { Icon } from "@iconify/react";
 import { Button, Checkbox, Input } from "@nextui-org/react";
 import Link from "next/link";
-import React from "react";
+import * as React from "react";
 
 export function SignUpForm() {
   const [isVisible, setIsVisible] = React.useState(false);

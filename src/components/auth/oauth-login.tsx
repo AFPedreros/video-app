@@ -12,14 +12,6 @@ export function OAuthLogin() {
       >
         Continúa con Google
       </Button>
-      <Button
-        startContent={
-          <Icon className="text-default-500" icon="fe:github" width={24} />
-        }
-        variant="bordered"
-      >
-        Continúa con Github
-      </Button>
     </div>
   );
 }

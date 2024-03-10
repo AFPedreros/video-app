@@ -5,7 +5,7 @@ import { ContentCard } from "@/components/cards/content-card";
 import { ContentDetailsModal } from "@/components/content-details-modal";
 import { Content } from "@/types";
 import { Spinner } from "@nextui-org/react";
-import React from "react";
+import * as React from "react";
 import { useInView } from "react-intersection-observer";
 
 type InfiniteScrollContentProps = {

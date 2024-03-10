@@ -4,7 +4,7 @@ import { fetchMovieDetails } from "@/actions";
 import { Content } from "@/types";
 import { Image, ModalBody, ModalContent, ModalHeader } from "@nextui-org/react";
 import { usePathname } from "next/navigation";
-import React from "react";
+import * as React from "react";
 
 type ContentDetailsProps = {
   contentId: string;
