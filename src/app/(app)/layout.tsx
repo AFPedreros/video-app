@@ -1,6 +1,6 @@
 import { MainNav } from "@/components/layouts/main-nav";
 
-export default function VideosLayout({
+export default function ContentLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

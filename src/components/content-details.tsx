@@ -1,7 +1,7 @@
 "use client";
 
 import { fetchMovieDetails } from "@/actions";
-import { Video } from "@/types";
+import { Content } from "@/types";
 import { Image, ModalBody, ModalContent, ModalHeader } from "@nextui-org/react";
 import React from "react";
 
@@ -10,7 +10,7 @@ type ContentDetailsProps = {
 };
 
 export function ContentDetails({ contentId }: ContentDetailsProps) {
-  const [movie, setMovie] = React.useState<Video | null>(null);
+  const [movie, setMovie] = React.useState<Content | null>(null);
 
   React.useEffect(() => {
     const fetchMovie = async () => {

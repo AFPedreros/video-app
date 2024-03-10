@@ -1,9 +1,9 @@
-import { fetchPopularMovies } from "@/actions";
+import { fetchPopular } from "@/actions";
 import { CategoriesContainer } from "@/components/categories-container";
-import { InfiniteScrollVideos } from "@/components/infinite-scroll-videos";
+import { InfiniteScrollContent } from "@/components/infinite-scroll-content";
 
 export default async function MoviesPage() {
-  const movies = await fetchPopularMovies({ page: 1 });
+  const movies = await fetchPopular({ page: 1, type: "movie" });
 
   return (
     <div className="flex flex-col items-center justify-center gap-6 bg-background p-6 lg:p-8">
@@ -14,7 +14,7 @@ export default async function MoviesPage() {
       </h1>
 
       <div className="grid max-w-7xl grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-        <InfiniteScrollVideos initialVideos={movies} />
+        <InfiniteScrollContent initialContent={movies} />
       </div>
     </div>
   );

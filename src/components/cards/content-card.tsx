@@ -1,27 +1,29 @@
 "use client";
 
 import { getReleaseYear } from "@/lib/utils";
-import { Video } from "@/types";
+import { Content } from "@/types";
 import { Icon } from "@iconify/react";
 import { Image } from "@nextui-org/react";
 
-type VideoCardProps = {
-  video: Video;
+type ContentCardProps = {
+  content: Content;
 };
 
-export function VideoCard({ video }: VideoCardProps) {
+export function ContentCard({ content }: ContentCardProps) {
   return (
     <article className="relative group flex w-full flex-none flex-col gap-3">
       <Image
         isBlurred
         isZoomed
-        alt={video.title}
+        alt={content.title}
         className="w-full group-hover:scale-110 sm:aspect-auto"
-        src={`https://image.tmdb.org/t/p/w500${video.poster_path}`}
+        src={`https://image.tmdb.org/t/p/w500${content.poster_path}`}
       />
-      <h3 className="text-small font-medium text-default-700">{video.title}</h3>
+      <h3 className="text-small font-medium text-default-700">
+        {content.title}
+      </h3>
       <p className="truncate text-small text-default-500">
-        {getReleaseYear(video)}
+        {getReleaseYear(content)}
       </p>
       <div className="flex items-center gap-1">
         <Icon
@@ -29,7 +31,7 @@ export function VideoCard({ video }: VideoCardProps) {
           icon="solar:star-bold"
         />
         <p>
-          <span>{video.vote_average.toFixed(2)}</span>
+          <span>{content.vote_average.toFixed(2)}</span>
           <span className="text-default-500"> / 10</span>
         </p>
       </div>

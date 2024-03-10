@@ -1,13 +1,15 @@
 "use server";
 
-import {
-  getMovieDetails,
-  getMoviesByGenre,
-  getPopularMovies,
-} from "@/lib/utils";
+import { getMovieDetails, getMoviesByGenre, getPopular } from "@/lib/utils";
 
-export async function fetchPopularMovies({ page = 1 }) {
-  return await getPopularMovies({ page });
+export async function fetchPopular({
+  page = 1,
+  type,
+}: {
+  page?: number;
+  type: "movie" | "tv";
+}) {
+  return await getPopular({ page, type });
 }
 
 export async function fetchMoviesByGenre({

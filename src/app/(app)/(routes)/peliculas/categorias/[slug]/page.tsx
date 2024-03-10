@@ -1,6 +1,6 @@
 import { fetchMoviesByGenre } from "@/actions";
 import { CategoriesContainer } from "@/components/categories-container";
-import { InfiniteScrollVideos } from "@/components/infinite-scroll-videos";
+import { InfiniteScrollContent } from "@/components/infinite-scroll-content";
 import { movieCategories } from "@/lib/categories-data";
 
 export default async function GenreIdPage({
@@ -23,7 +23,7 @@ export default async function GenreIdPage({
       </h1>
 
       <div className="grid max-w-7xl grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-        <InfiniteScrollVideos initialVideos={movies} />
+        <InfiniteScrollContent initialContent={movies} />
       </div>
     </div>
   );

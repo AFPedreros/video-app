@@ -1,32 +1,32 @@
 "use client";
 
-import { fetchPopularMovies } from "@/actions";
-import { VideoCard } from "@/components/cards/video-card";
+import { fetchPopular } from "@/actions";
+import { ContentCard } from "@/components/cards/content-card";
 import { ContentDetailsModal } from "@/components/content-details-modal";
-import { Video } from "@/types";
+import { Content } from "@/types";
 import { Spinner } from "@nextui-org/react";
 import React from "react";
 import { useInView } from "react-intersection-observer";
 
-type InfiniteScrollMoviesProps = {
-  initialVideos: Video[] | undefined;
+type InfiniteScrollContentProps = {
+  initialContent: Content[] | undefined;
 };
 
-export function InfiniteScrollVideos({
-  initialVideos,
-}: InfiniteScrollMoviesProps) {
-  const [videos, setVideos] = React.useState(initialVideos);
+export function InfiniteScrollContent({
+  initialContent,
+}: InfiniteScrollContentProps) {
+  const [content, setContent] = React.useState(initialContent);
   const [page, setPage] = React.useState(1);
   const [ref, inView] = useInView();
 
   async function loadMoreMovies() {
     const next = page + 1;
-    const videos = await fetchPopularMovies({ page: next });
-    if (videos?.length) {
+    const content = await fetchPopular({ page: next, type: "movie" });
+    if (content?.length) {
       setPage(next);
-      setVideos((prev: Video[] | undefined) => [
+      setContent((prev: Content[] | undefined) => [
         ...(prev?.length ? prev : []),
-        ...videos,
+        ...content,
       ]);
     }
   }
@@ -39,11 +39,11 @@ export function InfiniteScrollVideos({
 
   return (
     <>
-      {videos &&
-        videos.length > 0 &&
-        videos?.map((video) => (
-          <ContentDetailsModal key={video.id} contentId={video.id}>
-            <VideoCard key={video.id} video={video} />
+      {content &&
+        content.length > 0 &&
+        content?.map((c) => (
+          <ContentDetailsModal key={c.id} contentId={c.id}>
+            <ContentCard key={c.id} content={c} />
           </ContentDetailsModal>
         ))}
 
