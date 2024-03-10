@@ -2,6 +2,7 @@
 
 import { fetchPopularMovies } from "@/actions";
 import { VideoCard } from "@/components/cards/video-card";
+import { ContentDetailsModal } from "@/components/content-details-modal";
 import { Video } from "@/types";
 import { Spinner } from "@nextui-org/react";
 import React from "react";
@@ -40,7 +41,11 @@ export function InfiniteScrollVideos({
     <>
       {videos &&
         videos.length > 0 &&
-        videos?.map((video) => <VideoCard key={video.id} video={video} />)}
+        videos?.map((video) => (
+          <ContentDetailsModal key={video.id} contentId={video.id}>
+            <VideoCard key={video.id} video={video} />
+          </ContentDetailsModal>
+        ))}
 
       <div
         ref={ref}

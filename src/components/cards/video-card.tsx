@@ -3,21 +3,20 @@
 import { getReleaseYear } from "@/lib/utils";
 import { Video } from "@/types";
 import { Icon } from "@iconify/react";
-import { Button, cn, Image, Skeleton } from "@nextui-org/react";
+import { Image } from "@nextui-org/react";
 
 type VideoCardProps = {
   video: Video;
-  isLoading?: boolean;
 };
 
-export function VideoCard({ video, isLoading }: VideoCardProps) {
+export function VideoCard({ video }: VideoCardProps) {
   return (
-    <article className="relative flex w-full flex-none flex-col gap-3">
+    <article className="relative group flex w-full flex-none flex-col gap-3">
       <Image
         isBlurred
         isZoomed
         alt={video.title}
-        className="w-full hover:scale-110 sm:aspect-auto"
+        className="w-full group-hover:scale-110 sm:aspect-auto"
         src={`https://image.tmdb.org/t/p/w500${video.poster_path}`}
       />
       <h3 className="text-small font-medium text-default-700">{video.title}</h3>

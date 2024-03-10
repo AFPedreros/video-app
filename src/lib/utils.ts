@@ -42,3 +42,15 @@ export async function getMoviesByGenre({
     return [];
   }
 }
+
+export async function getMovieDetails({ movieId }: { movieId: number }) {
+  const apiUrl = `${process.env.TMDB_API_URL}/movie/${movieId}?api_key=${apiKey}&language=es-US`;
+
+  try {
+    const response = await axios.get(apiUrl);
+    return response.data;
+  } catch (error) {
+    console.error("Failed to fetch movie details:", error);
+    return null;
+  }
+}
