@@ -1,6 +1,8 @@
 import { Video } from "@/types";
 import axios from "axios";
 
+const apiKey = process.env.TMDB_API_KEY;
+
 export function getReleaseYear(video: Video) {
   const date = video?.release_date;
 
@@ -13,7 +15,6 @@ export function getReleaseYear(video: Video) {
 }
 
 export async function getPopularMovies({ page }: { page?: number }) {
-  const apiKey = process.env.TMDB_API_KEY;
   const apiUrl = `${process.env.TMDB_API_URL}/movie/popular?api_key=${apiKey}&language=es-US&page=${page}`;
 
   try {
@@ -21,6 +22,23 @@ export async function getPopularMovies({ page }: { page?: number }) {
     return response.data.results as Video[];
   } catch (error) {
     console.error("Failed to fetch popular movies:", error);
+    return [];
+  }
+}
+export async function getMoviesByGenre({
+  genreId,
+  page,
+}: {
+  genreId: number;
+  page?: number;
+}) {
+  const apiUrl = `${process.env.TMDB_API_URL}/discover/movie?api_key=${apiKey}&language=es-US&page=${page}&with_genres=${genreId}`;
+
+  try {
+    const response = await axios.get(apiUrl);
+    return response.data.results as Video[];
+  } catch (error) {
+    console.error("Failed to fetch movies by genre:", error);
     return [];
   }
 }

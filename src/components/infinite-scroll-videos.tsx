@@ -7,11 +7,13 @@ import { Spinner } from "@nextui-org/react";
 import React from "react";
 import { useInView } from "react-intersection-observer";
 
-export default function InfiniteScrollMovies({
-  initialVideos,
-}: {
+type InfiniteScrollMoviesProps = {
   initialVideos: Video[] | undefined;
-}) {
+};
+
+export function InfiniteScrollVideos({
+  initialVideos,
+}: InfiniteScrollMoviesProps) {
   const [videos, setVideos] = React.useState(initialVideos);
   const [page, setPage] = React.useState(1);
   const [ref, inView] = useInView();

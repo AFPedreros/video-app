@@ -17,7 +17,7 @@ export function VideoCard({ video, isLoading }: VideoCardProps) {
         isBlurred
         isZoomed
         alt={video.title}
-        className="aspect-[4/5] w-full hover:scale-110 sm:aspect-[9/16]"
+        className="w-full hover:scale-110 sm:aspect-auto"
         src={`https://image.tmdb.org/t/p/w500${video.poster_path}`}
       />
       <h3 className="text-small font-medium text-default-700">{video.title}</h3>

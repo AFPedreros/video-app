@@ -1,5 +1,6 @@
 "use client";
 
+import { AvatarButton } from "@/components/avatar-button";
 import { Logo } from "@/components/logo";
 import { Icon } from "@iconify/react";
 import {
@@ -12,8 +13,6 @@ import {
 } from "@nextui-org/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-import { AvatarButton } from "../avatar-button";
 
 export function MainNav() {
   const pathname = usePathname();
@@ -35,7 +34,9 @@ export function MainNav() {
         <NavbarContent className="hidden gap-3 sm:flex">
           <NavbarItem>
             <Link
-              className={cn({ "text-primary": pathname === "/peliculas" })}
+              className={cn({
+                "text-primary": pathname.includes("/peliculas"),
+              })}
               href="/peliculas"
               aria-current={pathname === "/peliculas" ? "page" : "false"}
             >
@@ -44,7 +45,7 @@ export function MainNav() {
           </NavbarItem>
           <NavbarItem isActive>
             <Link
-              className={cn({ "text-primary": pathname === "/series" })}
+              className={cn({ "text-primary": pathname.includes("/series") })}
               href="/series"
               aria-current={pathname === "/series" ? "page" : "false"}
             >
