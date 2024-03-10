@@ -1,5 +1,7 @@
 # Cineverse
 
+![cover-image](https://cineverse-beta.vercel.app/cover.png)
+
 Este proyecto ha sido desarrollado como parte de una prueba técnica para FrontEnd Developer, enfocado en emular la experiencia de visualizar contenido multimedia tipo videos. La aplicación permite a los usuarios registrarse, iniciar sesión y explorar una amplia variedad de películas y series, organizadas por popularidad y filtrables por 5 categorías diferentes, todo ello gracias a la integración con la API TMDB.
 
 ## Tecnologías Utilizadas
