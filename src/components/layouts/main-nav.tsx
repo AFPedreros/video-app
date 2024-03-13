@@ -71,7 +71,9 @@ export function MainNav() {
         {isSignedIn && <AvatarButton />}
       </NavbarContent>
 
-      <NavbarMenuToggle className="text-default-400 md:hidden" />
+      {isSignedIn && (
+        <NavbarMenuToggle className="text-default-400 md:hidden" />
+      )}
 
       <MobileNavbar />
     </Navbar>
