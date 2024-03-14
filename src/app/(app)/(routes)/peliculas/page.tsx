@@ -10,7 +10,7 @@ export default async function MoviesPage() {
     <div className="flex flex-col items-center justify-center gap-6 bg-background p-6 lg:p-8">
       <CategoriesContainer categories={movieCategories} type="movie" />
 
-      <h1 className="w-full text-3xl font-extrabold tracking-tight">
+      <h1 className="w-full max-w-7xl text-3xl font-extrabold tracking-tight">
         Películas Populares
       </h1>
 
